@@ -1,9 +1,11 @@
+# -*- coding: utf-8 -*-
 from odoo import models
 
 class Website(models.Model):
     _inherit = 'website'
 
     def _search_render_results(self, search_details, limit):
+        """e-commerce searchbar filtration only through the allowed products of the user """
         search_details = super()._search_render_results(search_details, limit)
 
         partner = self.env.user.partner_id
